@@ -295,6 +295,7 @@
 				34D0094C1B6FE19600FE9F5E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

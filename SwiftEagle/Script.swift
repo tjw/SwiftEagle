@@ -25,6 +25,10 @@ public class Script {
         
     }
     
+    public func string() -> String {
+        return buffer
+    }
+    
     // MARK:- Basic commands
     
     public func addLibrary(name:String) {
@@ -34,9 +38,15 @@ public class Script {
         command("use -* \(name)")
     }
     
-    public func addComponent(name:String, library:String?, origin:Point) {
-        let fullName = library != nil ? "\(name)@\(library!)" : name
-        command("add \(fullName) \(origin.formatted)")
+    public func addComponent(component:String, library:String?, name:String?, origin:Point) {
+        let fullName = library != nil ? "\(component)@\(library!)" : component
+        
+        var cmd = "add \(fullName)"
+        if let name = name {
+            cmd = cmd + " \(name)"
+        }
+        cmd = cmd + " \(origin.formatted)"
+        command(cmd)
     }
     
     // MARK:- Private
