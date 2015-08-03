@@ -8,12 +8,11 @@
 
 import Foundation
 
+// An instantiated instance of a Library.Element.
 public struct Component {
     public let name:String
-    public let library: Library?
     
-    public init(_ name:String, library:Library?) {
+    public init(_ name:String) {
         self.name = name
-        self.library = library
     }
 }

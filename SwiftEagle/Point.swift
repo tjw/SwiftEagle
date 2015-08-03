@@ -20,3 +20,7 @@ public struct Point {
         return "(\(x.formatted) \(y.formatted))"
     }
 }
+
+public func +(a:Point, b:Point) -> Point {
+    return Point(a.x + b.x, a.y + b.y)
+}
