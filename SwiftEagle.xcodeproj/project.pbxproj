@@ -12,6 +12,8 @@
 		34D009501B6FE24800FE9F5E /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D0094F1B6FE24800FE9F5E /* Layer.swift */; };
 		34D009531B6FE59E00FE9F5E /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D009521B6FE59E00FE9F5E /* Measurement.swift */; };
 		34D009551B6FE5DC00FE9F5E /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D009541B6FE5DC00FE9F5E /* Point.swift */; };
+		34DBDA4E1B6FF66300FEF48F /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DBDA4D1B6FF66300FEF48F /* Library.swift */; };
+		34DBDA501B6FF76000FEF48F /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DBDA4F1B6FF76000FEF48F /* Component.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		34D0094F1B6FE24800FE9F5E /* Layer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
 		34D009521B6FE59E00FE9F5E /* Measurement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Measurement.swift; sourceTree = "<group>"; };
 		34D009541B6FE5DC00FE9F5E /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
+		34DBDA4D1B6FF66300FEF48F /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
+		34DBDA4F1B6FF76000FEF48F /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				34D009521B6FE59E00FE9F5E /* Measurement.swift */,
 				34D009541B6FE5DC00FE9F5E /* Point.swift */,
 				34D0094F1B6FE24800FE9F5E /* Layer.swift */,
+				34DBDA4D1B6FF66300FEF48F /* Library.swift */,
+				34DBDA4F1B6FF76000FEF48F /* Component.swift */,
 			);
 			path = SwiftEagle;
 			sourceTree = "<group>";
@@ -144,9 +150,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				34D009551B6FE5DC00FE9F5E /* Point.swift in Sources */,
+				34DBDA501B6FF76000FEF48F /* Component.swift in Sources */,
 				34D0094E1B6FE1B700FE9F5E /* Script.swift in Sources */,
 				34D009501B6FE24800FE9F5E /* Layer.swift in Sources */,
 				34D009531B6FE59E00FE9F5E /* Measurement.swift in Sources */,
+				34DBDA4E1B6FF66300FEF48F /* Library.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
