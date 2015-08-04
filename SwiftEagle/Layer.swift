@@ -8,6 +8,6 @@
 
 import Foundation
 
-enum Layer {
-    
+public enum Layer: UInt {
+    case Dimension = 20
 }

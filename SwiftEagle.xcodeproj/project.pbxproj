@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		34D009461B6FE19600FE9F5E /* SwiftEagle.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D009451B6FE19600FE9F5E /* SwiftEagle.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		34D0094E1B6FE1B700FE9F5E /* Script.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D0094D1B6FE1B700FE9F5E /* Script.swift */; };
+		34D0094E1B6FE1B700FE9F5E /* Eagle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D0094D1B6FE1B700FE9F5E /* Eagle.swift */; };
 		34D009501B6FE24800FE9F5E /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D0094F1B6FE24800FE9F5E /* Layer.swift */; };
 		34D009531B6FE59E00FE9F5E /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D009521B6FE59E00FE9F5E /* Measurement.swift */; };
 		34D009551B6FE5DC00FE9F5E /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D009541B6FE5DC00FE9F5E /* Point.swift */; };
@@ -20,7 +20,7 @@
 		34D009421B6FE19600FE9F5E /* SwiftEagle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftEagle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34D009451B6FE19600FE9F5E /* SwiftEagle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftEagle.h; sourceTree = "<group>"; };
 		34D009471B6FE19600FE9F5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		34D0094D1B6FE1B700FE9F5E /* Script.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Script.swift; sourceTree = "<group>"; };
+		34D0094D1B6FE1B700FE9F5E /* Eagle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Eagle.swift; sourceTree = "<group>"; };
 		34D0094F1B6FE24800FE9F5E /* Layer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
 		34D009521B6FE59E00FE9F5E /* Measurement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Measurement.swift; sourceTree = "<group>"; };
 		34D009541B6FE5DC00FE9F5E /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 			children = (
 				34D009451B6FE19600FE9F5E /* SwiftEagle.h */,
 				34D009471B6FE19600FE9F5E /* Info.plist */,
-				34D0094D1B6FE1B700FE9F5E /* Script.swift */,
+				34D0094D1B6FE1B700FE9F5E /* Eagle.swift */,
 				34D009521B6FE59E00FE9F5E /* Measurement.swift */,
 				34D009541B6FE5DC00FE9F5E /* Point.swift */,
 				34D0094F1B6FE24800FE9F5E /* Layer.swift */,
@@ -151,7 +151,7 @@
 			files = (
 				34D009551B6FE5DC00FE9F5E /* Point.swift in Sources */,
 				34DBDA501B6FF76000FEF48F /* Component.swift in Sources */,
-				34D0094E1B6FE1B700FE9F5E /* Script.swift in Sources */,
+				34D0094E1B6FE1B700FE9F5E /* Eagle.swift in Sources */,
 				34D009501B6FE24800FE9F5E /* Layer.swift in Sources */,
 				34D009531B6FE59E00FE9F5E /* Measurement.swift in Sources */,
 				34DBDA4E1B6FF66300FEF48F /* Library.swift in Sources */,

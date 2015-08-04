@@ -1,5 +1,5 @@
 //
-//  Script.swift
+//  Eagle.swift
 //  SwiftEagle
 //
 //  Created by Timothy J. Wood on 8/3/15.
@@ -16,7 +16,7 @@ There are probably reasons to use the ULP (User Level Program) support in EAGLE 
 
 */
 
-public class Script {
+public class Eagle {
     
     // Required path extension for EAGLE scripts
     public static let pathExtension:String = "scr"
@@ -83,6 +83,10 @@ public class Script {
             let prefix = element.prefix
             let componentIndex = componentCountByPrefix[prefix] ?? 0
             componentName = "\(prefix)\(componentIndex)"
+            
+            if let s = element.suffix {
+                componentName += s
+            }
             componentCountByPrefix[prefix] = componentIndex + 1
         } else {
             componentName = name!
@@ -102,7 +106,7 @@ public class Script {
         
         command(cmd)
  
-        let result = Component(componentName)
+        let result = Component(componentName, origin:origin)
         
         if degrees != 0 {
             rotate(result, degrees:degrees)
@@ -112,9 +116,45 @@ public class Script {
     }
     
     // In the schematic editor, the angle must be 0, 90, 180, or 270.
-    // The angle is added to the current angle of the component ('=' can be prepended to the 'R' if we need to have a 'set angle').
-    public func rotate(component:Component, degrees:Double) {
-        command("rotate R\(degrees) \(component.name)")
+    // The angle is added to the current angle of the component unless 'absolute' is specified
+    public func rotate(component:Component, degrees:Double, absolute:Bool = false) {
+        var cmd = "rotate "
+        
+        if absolute {
+            cmd += "="
+        }
+        
+        cmd += "R\(degrees) \(component.name)"
+        command(cmd)
+    }
+    
+    // Sadly, the net command doesn't take pin names, only locations and the scripting language doesn't have any way to get this.
+    // This means you have to know the offsets of pins relative to their element's origin in order to make connections
+    public func net(from from:Point, to:Point, auto_end:Bool = true) {
+        var cmd = "net \(from.formatted) \(to.formatted)"
+        
+        if auto_end == false {
+            cmd += " auto_end_off"
+        }
+        
+        command(cmd)
+    }
+    
+    public func edit(name:String) {
+        command("edit \(name)")
+    }
+
+    public func confirmDialogsAutomatically(confirm:Bool) {
+        let name = confirm ? "YES" : "NO"
+        command("set confirm \(name)")
+    }
+
+    public func layer(layer:Layer) {
+        command("layer \(layer.rawValue)")
+    }
+    
+    public func delete(point:Point) {
+        command("delete \(point.formatted)")
     }
     
     // MARK:- Private

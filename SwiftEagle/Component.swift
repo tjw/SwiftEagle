@@ -11,8 +11,10 @@ import Foundation
 // An instantiated instance of a Library.Element.
 public struct Component {
     public let name:String
+    public let origin:Point
     
-    public init(_ name:String) {
+    public init(_ name:String, origin:Point) {
         self.name = name
+        self.origin = origin
     }
 }

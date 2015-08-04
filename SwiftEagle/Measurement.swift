@@ -58,7 +58,15 @@ public enum Measurement {
     }
 }
 
+// For now, these always converts to millimeters. Could make it use the type of the first argument.
+
 public func +(a:Measurement, b:Measurement) -> Measurement {
-    // For now, this always converts to millimeters. Could make it use the type of the first argument.
     return Measurement.Millimeter(a.millimeters + b.millimeters)
+}
+
+public func *(m:Measurement, s:Double) -> Measurement {
+    return Measurement.Millimeter(m.millimeters * s)
+}
+public func *(s:Double, m:Measurement) -> Measurement {
+    return Measurement.Millimeter(m.millimeters * s)
 }
