@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum Measurement {
+public enum Measurement: Comparable {
     case Millimeter(Double)
     case Inch(Double)
     case Mil(Double) // Thousandths of an inch
@@ -63,10 +63,30 @@ public enum Measurement {
 public func +(a:Measurement, b:Measurement) -> Measurement {
     return Measurement.Millimeter(a.millimeters + b.millimeters)
 }
+public func -(a:Measurement, b:Measurement) -> Measurement {
+    return Measurement.Millimeter(a.millimeters - b.millimeters)
+}
 
 public func *(m:Measurement, s:Double) -> Measurement {
     return Measurement.Millimeter(m.millimeters * s)
 }
 public func *(s:Double, m:Measurement) -> Measurement {
     return Measurement.Millimeter(m.millimeters * s)
+}
+
+public func ==(lhs: Measurement, rhs: Measurement) -> Bool {
+    return lhs.millimeters == rhs.millimeters
+}
+
+public func <(lhs: Measurement, rhs: Measurement) -> Bool {
+    return lhs.millimeters < rhs.millimeters
+}
+public func <=(lhs: Measurement, rhs: Measurement) -> Bool {
+    return lhs.millimeters <= rhs.millimeters
+}
+public func >=(lhs: Measurement, rhs: Measurement) -> Bool {
+    return lhs.millimeters >= rhs.millimeters
+}
+public func >(lhs: Measurement, rhs: Measurement) -> Bool {
+    return lhs.millimeters > rhs.millimeters
 }

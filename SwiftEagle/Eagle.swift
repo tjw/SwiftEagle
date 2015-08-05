@@ -157,6 +157,34 @@ public class Eagle {
         command("delete \(point.formatted)")
     }
     
+    public func wire(from from:Point, to:Point) {
+        command("wire \(from.formatted) \(to.formatted)")
+    }
+    
+    public func arc(p1:Point, p2:Point, p3:Point, clockwise:Bool = true) {
+        var cmd = "arc"
+        
+        if !clockwise {
+            cmd += " ccw"
+        }
+        cmd += " \(p1.formatted) \(p2.formatted) \(p3.formatted)"
+        command(cmd)
+    }
+    
+    public func polygon(name:String, points:[Point]) {
+        var cmd = "polygon \(name)"
+        
+        for p in points {
+            cmd += " \(p.formatted)"
+        }
+        command(cmd)
+    }
+    
+    // Hacky; the origin in the component is in the schematic side, while this is mostly useful for the board side. We could return a new component for the board side, but that doesn't seem useful currently.
+    public func move(component:Component, to:Point) {
+        command("move \(component.name) \(to.formatted)")
+    }
+    
     // MARK:- Private
 
     var buffer = ""
