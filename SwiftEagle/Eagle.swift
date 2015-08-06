@@ -113,7 +113,7 @@ public class Eagle {
         
         command(cmd)
  
-        let result = Component(componentName, element:element, origin:origin)
+        let result = Component(componentName, element:element, transform:Transform(degrees:degrees, translate:origin))
         
         if degrees != 0 {
             rotate(result, degrees:degrees)
@@ -203,7 +203,9 @@ public class Eagle {
     
     public func move(component:Component, to:Point) -> Component {
         command("move \(component.name) \(to.formatted)")
-        return Component(component.name, element:component.element, origin:to)
+        
+        let transform = Transform(degrees: component.transform.degrees, mirror: component.transform.mirror, translate: to)
+        return Component(component.name, element:component.element, transform:transform)
     }
     
     // MARK:- Private

@@ -38,6 +38,8 @@ public class Library {
         public let library: Library
         
         public let frame:Rect // The rectangle enclosing the element when it is at the origin
+
+        var pins:[Pin] = []
         
         init(_ name:String, library:Library, prefix:String, suffix:String?, frame:Rect) {
             assert(frame.size.w.positive)
@@ -49,6 +51,32 @@ public class Library {
             self.suffix = suffix
             self.frame = frame
             
+        }
+        
+        public enum PinDirection {
+            case Left
+            case Right
+            case Up
+            case Down
+        }
+        
+        struct Pin {
+            let name:String
+            let location:Point
+            let direction:PinDirection
+            
+            init(name:String, location:Point, direction:PinDirection) {
+                self.name = name
+                self.location = location
+                self.direction = direction
+            }
+        }
+        
+        public func addPin(name:String, location:Point, direction:PinDirection) {
+            // Disallow duplicate pin names, though some devices have muliple GND pins. We'll require our definition to be unique so we know where on the element you are talking about.
+            assert(pins.indexOf({ $0.name == name}) == nil)
+            
+            pins.append(Pin(name:name, location:location, direction:direction))
         }
     }
 

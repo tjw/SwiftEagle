@@ -17,6 +17,7 @@
 		34DBDA521B74011E00FEF48F /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DBDA511B74011D00FEF48F /* Size.swift */; };
 		34DBDA551B74016800FEF48F /* Rect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DBDA541B74016800FEF48F /* Rect.swift */; };
 		34DBDA571B7405D800FEF48F /* Double-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DBDA561B7405D800FEF48F /* Double-Extensions.swift */; };
+		34DBDA591B74104300FEF48F /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DBDA581B74104300FEF48F /* Transform.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		34DBDA511B74011D00FEF48F /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		34DBDA541B74016800FEF48F /* Rect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rect.swift; sourceTree = "<group>"; };
 		34DBDA561B7405D800FEF48F /* Double-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double-Extensions.swift"; sourceTree = "<group>"; };
+		34DBDA581B74104300FEF48F /* Transform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				34D009541B6FE5DC00FE9F5E /* Point.swift */,
 				34DBDA511B74011D00FEF48F /* Size.swift */,
 				34DBDA541B74016800FEF48F /* Rect.swift */,
+				34DBDA581B74104300FEF48F /* Transform.swift */,
 			);
 			name = Geometry;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 			files = (
 				34D009551B6FE5DC00FE9F5E /* Point.swift in Sources */,
 				34DBDA521B74011E00FEF48F /* Size.swift in Sources */,
+				34DBDA591B74104300FEF48F /* Transform.swift in Sources */,
 				34DBDA571B7405D800FEF48F /* Double-Extensions.swift in Sources */,
 				34DBDA501B6FF76000FEF48F /* Component.swift in Sources */,
 				34DBDA551B74016800FEF48F /* Rect.swift in Sources */,
