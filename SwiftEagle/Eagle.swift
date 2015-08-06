@@ -117,11 +117,15 @@ public class Eagle {
     
     // In the schematic editor, the angle must be 0, 90, 180, or 270.
     // The angle is added to the current angle of the component unless 'absolute' is specified
-    public func rotate(component:Component, degrees:Double, absolute:Bool = false) {
+    public func rotate(component:Component, degrees:Double, mirror:Bool = false, absolute:Bool = false) {
         var cmd = "rotate "
         
         if absolute {
             cmd += "="
+        }
+        
+        if mirror {
+            cmd += "M"
         }
         
         cmd += "R\(degrees) \(component.name)"
@@ -180,9 +184,9 @@ public class Eagle {
         command(cmd)
     }
     
-    // Hacky; the origin in the component is in the schematic side, while this is mostly useful for the board side. We could return a new component for the board side, but that doesn't seem useful currently.
-    public func move(component:Component, to:Point) {
+    public func move(component:Component, to:Point) -> Component {
         command("move \(component.name) \(to.formatted)")
+        return Component(component.name, origin: to)
     }
     
     // MARK:- Private
