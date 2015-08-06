@@ -30,6 +30,15 @@ public enum Measurement: Comparable {
         }
     }
     
+    public var inches:Double {
+        switch self {
+        case .Millimeter(let v):
+            return v/25.4
+        case .Inch(let v):
+            return v
+        }
+    }
+    
     public var value:Double {
         switch self {
         case .Millimeter(let v):
@@ -49,23 +58,48 @@ public enum Measurement: Comparable {
     }
 }
 
-// For now, these always converts to millimeters. Could make it use the type of the first argument.
+// These return something in the units of the first argument. This approach to measurements isn't that great, but is fairly simple.
 
 public func +(a:Measurement, b:Measurement) -> Measurement {
-    return Measurement.Millimeter(a.millimeters + b.millimeters)
+    switch a {
+    case .Millimeter:
+        return Measurement.Millimeter(a.millimeters + b.millimeters)
+    case .Inch:
+        return Measurement.Inch(a.inches + b.inches)
+    }
 }
 public func -(a:Measurement, b:Measurement) -> Measurement {
-    return Measurement.Millimeter(a.millimeters - b.millimeters)
+    switch a {
+    case .Millimeter:
+        return Measurement.Millimeter(a.millimeters - b.millimeters)
+    case .Inch:
+        return Measurement.Inch(a.inches - b.inches)
+    }
 }
 public prefix func -(a:Measurement) -> Measurement {
-    return Measurement.Millimeter(-a.millimeters)
+    switch a {
+    case .Millimeter:
+        return Measurement.Millimeter(-a.millimeters)
+    case .Inch:
+        return Measurement.Inch(-a.inches)
+    }
 }
 
 public func *(m:Measurement, s:Double) -> Measurement {
-    return Measurement.Millimeter(m.millimeters * s)
+    switch m {
+    case .Millimeter:
+        return Measurement.Millimeter(m.millimeters * s)
+    case .Inch:
+        return Measurement.Inch(m.inches * s)
+    }
 }
 public func *(s:Double, m:Measurement) -> Measurement {
-    return Measurement.Millimeter(m.millimeters * s)
+    switch m {
+    case .Millimeter:
+        return Measurement.Millimeter(m.millimeters * s)
+    case .Inch:
+        return Measurement.Inch(m.inches * s)
+    }
 }
 
 public func ==(lhs: Measurement, rhs: Measurement) -> Bool {
