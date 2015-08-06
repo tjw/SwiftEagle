@@ -74,7 +74,7 @@ public class Eagle {
     
     // In the schematic editor, the angle must be 0, 90, 180, or 270.
     public func addComponent(element:Library.Element, name:String? = nil, origin:Point, degrees:Double = 0) -> Component {
-        let fullName = element.library != nil ? "\(element.name)@\(element.library!.name)" : element.name
+        let fullName = "\(element.name)@\(element.library.name)"
         
         var cmd = "add \(fullName)"
         
@@ -138,12 +138,22 @@ public class Eagle {
         var cmd = "net \(from.formatted) \(to.formatted)"
         
         if auto_end == false {
-            cmd += " auto_end_off"
+            cmd += " auto_end_net_off"
         }
         
         command(cmd)
     }
     
+    public func net(points:[Point]) {
+        var cmd = "net "
+        
+        for p in points {
+            cmd += " \(p.formatted)"
+        }
+        
+        command(cmd)
+    }
+
     public func edit(name:String) {
         command("edit \(name)")
     }

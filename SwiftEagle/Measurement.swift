@@ -56,6 +56,11 @@ public enum Measurement: Comparable {
             return "in"
         }
     }
+    
+    public var positive:Bool {
+        return self.value > 0
+    }
+    
 }
 
 // These return something in the units of the first argument. This approach to measurements isn't that great, but is fairly simple.
