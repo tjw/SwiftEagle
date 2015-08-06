@@ -16,6 +16,13 @@ There are probably reasons to use the ULP (User Level Program) support in EAGLE 
 
 */
 
+public extension Point {
+    // Format a point as in a EAGLE command (no comma, units specified). The abbreviation names happen to match here.
+    var formatted: String {
+        return "(\(x.value)\(x.unit.abbreviation) \(y.value)\(y.unit.abbreviation))"
+    }
+}
+
 public class Eagle {
     
     // Required path extension for EAGLE scripts
@@ -47,7 +54,7 @@ public class Eagle {
             cmd += " \(visibility) \(type.rawValue)"
         }
         
-        cmd += " \(measurement.unit) \(measurement.value)"
+        cmd += " \(measurement.unit.abbreviation) \(measurement.value)"
         
         if let factor = factor {
             cmd += " \(factor)"

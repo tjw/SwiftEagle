@@ -18,21 +18,22 @@ public struct Point {
     
     public init(x:Measurement) {
         self.x = x
-        self.y = Measurement.Millimeter(0)
+        self.y = Measurement(0, x.unit)
     }
 
     public init(y:Measurement) {
-        self.x = Measurement.Millimeter(0)
+        self.x = Measurement(0, y.unit)
         self.y = y
     }
-    
-    public var formatted:String {
-        return "(\(x.formatted) \(y.formatted))"
-    }
-    
+        
     public var length: Measurement {
-        let mm2 = x.millimeters*x.millimeters + y.millimeters*y.millimeters
-        return Measurement.Millimeter(sqrt(mm2))
+        // Get components in the same units, if they aren't already.
+        let xv = x
+        let yv = y.to(x.unit)
+        
+        // Return the distance in the same units as the original x component
+        let d2 = xv.value*xv.value + yv.value * yv.value
+        return Measurement(sqrt(d2), x.unit)
     }
 }
 
