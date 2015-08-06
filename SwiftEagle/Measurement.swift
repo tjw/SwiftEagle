@@ -11,7 +11,6 @@ import Foundation
 public enum Measurement: Comparable {
     case Millimeter(Double)
     case Inch(Double)
-    case Mil(Double) // Thousandths of an inch
     
     public var formatted: String {
         switch self {
@@ -19,8 +18,6 @@ public enum Measurement: Comparable {
             return "\(v)mm"
         case .Inch(let v):
             return "\(v)in"
-        case .Mil(let v):
-            return "\(v)mil"
         }
     }
     
@@ -30,8 +27,6 @@ public enum Measurement: Comparable {
             return v
         case .Inch(let v):
             return 25.4*v
-        case .Mil(let v):
-            return 0.0254*v
         }
     }
     
@@ -40,8 +35,6 @@ public enum Measurement: Comparable {
         case .Millimeter(let v):
             return v
         case .Inch(let v):
-            return v
-        case .Mil(let v):
             return v
         }
     }
@@ -52,8 +45,6 @@ public enum Measurement: Comparable {
             return "mm"
         case .Inch:
             return "in"
-        case .Mil:
-            return "mil"
         }
     }
 }
