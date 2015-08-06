@@ -66,6 +66,9 @@ public func +(a:Measurement, b:Measurement) -> Measurement {
 public func -(a:Measurement, b:Measurement) -> Measurement {
     return Measurement.Millimeter(a.millimeters - b.millimeters)
 }
+public prefix func -(a:Measurement) -> Measurement {
+    return Measurement.Millimeter(-a.millimeters)
+}
 
 public func *(m:Measurement, s:Double) -> Measurement {
     return Measurement.Millimeter(m.millimeters * s)
