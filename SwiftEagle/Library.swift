@@ -79,9 +79,26 @@ public class Library {
             pins.append(Pin(name:name, location:location, direction:direction))
         }
         
-        subscript(pin:String) -> Pin {
-            let pinIndex = pins.indexOf({ $0.name == pin })
+        subscript(pinName:String) -> Pin {
+            let pinIndex = pins.indexOf({ $0.name == pinName })
             return pins[pinIndex!] // not bothering with error handling; die if you give a bad argument
+        }
+
+        // A little Logo-turtle type thing. The starting point is at the tip of a pin, pointing in the direction of the pin.
+        public func turtle(pinName:String) -> Turtle {
+            let pin = self[pinName]
+            let degrees:Double
+            switch(pin.direction) {
+            case .Right:
+                degrees = 0
+            case .Up:
+                degrees = 90
+            case .Left:
+                degrees = 180
+            case .Down:
+                degrees = 270
+            }
+            return Turtle(location:pin.location, degrees:degrees)
         }
     }
 

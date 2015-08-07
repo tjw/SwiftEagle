@@ -28,4 +28,22 @@ public struct Component {
         let pin = element[name]
         return transform.apply(pin.location)
     }
+    
+    public func turtle(pinName:String) -> Turtle {
+        // Element-space turtle
+        let pinTurtle = element.turtle(pinName)
+        
+        // Step it forward 1mm
+        let forward = pinTurtle.move(Millimeter(1))
+        
+        // Transform both points (which might to a mirror, rotate, etc).
+        let head = transform.apply(pinTurtle.location)
+        let tail = transform.apply(forward.location)
+        
+        let d = tail - head
+        
+        let radians = atan2(d.y.value, d.x.value)
+        
+        return Turtle(location: head, degrees: radians * 360 / (2.0 * M_PI))
+    }
 }

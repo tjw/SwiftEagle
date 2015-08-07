@@ -22,7 +22,6 @@ public struct Transform {
     
     public func apply(pt:Point) -> Point {
         let radians = degrees * 2*M_PI / 360.0
-        
         let c = cos(radians)
         let s = sin(radians)
         
