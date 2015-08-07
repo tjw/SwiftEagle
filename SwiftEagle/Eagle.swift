@@ -164,6 +164,10 @@ public class Eagle {
         command(cmd)
     }
 
+    public func net(turtles:[Turtle]) {
+        net(turtles.map { $0.location })
+    }
+    
     public func edit(name:String) {
         command("edit \(name)")
     }
