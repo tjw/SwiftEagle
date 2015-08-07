@@ -143,20 +143,14 @@ public class Eagle {
     }
     
     // Sadly, the net command doesn't take pin names, only locations and the scripting language doesn't have any way to get this.
-    // This means you have to know the offsets of pins relative to their element's origin in order to make connections
-    public func net(from from:Point, to:Point, auto_end:Bool = true) {
-        var cmd = "net \(from.formatted) \(to.formatted)"
-        
-        if auto_end == false {
-            cmd += " auto_end_net_off"
-        }
-        
-        command(cmd)
-    }
-    
-    public func net(points:[Point]) {
+    // Using pin definitions in Library.Element along with Component transforms and turtles makes this a little less bad.
+    // Adding support for parsing EAGLE libraries could automate this...
+    public func net(points:[Point], name:String? = nil, auto_end:Bool = true) {
         var cmd = "net "
         
+        if let name = name {
+            cmd += " \(name)"
+        }
         for p in points {
             cmd += " \(p.formatted)"
         }
@@ -164,8 +158,8 @@ public class Eagle {
         command(cmd)
     }
 
-    public func net(turtles:[Turtle]) {
-        net(turtles.map { $0.location })
+    public func net(turtles:[Turtle], name:String? = nil, auto_end:Bool = true) {
+        net(turtles.map { $0.location }, name:name, auto_end:auto_end)
     }
     
     public func edit(name:String) {
