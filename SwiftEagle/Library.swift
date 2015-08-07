@@ -15,9 +15,9 @@ public class Library {
     public let name:String
     
     init(path:String) {
-        assert(path.pathExtension == Library.PathExtension)
+        assert((path as NSString).pathExtension == Library.PathExtension)
         self.path = path
-        self.name = path.lastPathComponent.stringByDeletingPathExtension
+        self.name = ((path as NSString).lastPathComponent as NSString).stringByDeletingPathExtension
     }
     
     init(name:String) {
