@@ -35,6 +35,12 @@ public struct Point {
         let d2 = xv.value*xv.value + yv.value * yv.value
         return Measurement(sqrt(d2), x.unit)
     }
+    
+    public func midPoint(pt:Point) -> Point {
+        let midX = 0.5 * (x + pt.x)
+        let midY = 0.5 * (y + pt.y)
+        return Point(midX, midY)
+    }
 }
 
 public func +(a:Point, b:Point) -> Point {
