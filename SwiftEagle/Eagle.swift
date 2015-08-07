@@ -124,7 +124,7 @@ public class Eagle {
     
     // In the schematic editor, the angle must be 0, 90, 180, or 270.
     // The angle is added to the current angle of the component unless 'absolute' is specified
-    public func rotate(component:Component, degrees:Double, mirror:Bool = false, absolute:Bool = false) {
+    public func rotate(component:Component, degrees:Double, mirror:Bool = false, absolute:Bool = false) -> Component {
         var cmd = "rotate "
         
         if absolute {
@@ -137,6 +137,9 @@ public class Eagle {
         
         cmd += "R\(degrees) \(component.name)"
         command(cmd)
+        
+        let transform = Transform(degrees: degrees, mirror: mirror, translate: component.transform.translate)
+        return Component(component.name, element:component.element, transform:transform)
     }
     
     // Sadly, the net command doesn't take pin names, only locations and the scripting language doesn't have any way to get this.
