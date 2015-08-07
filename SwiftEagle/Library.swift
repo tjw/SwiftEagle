@@ -50,29 +50,21 @@ public class Library {
             self.prefix = prefix
             self.suffix = suffix
             self.frame = frame
-            
-        }
-        
-        public enum PinDirection {
-            case Left
-            case Right
-            case Up
-            case Down
         }
         
         struct Pin {
             let name:String
             let location:Point
-            let direction:PinDirection
+            let direction:Direction
             
-            init(name:String, location:Point, direction:PinDirection) {
+            init(name:String, location:Point, direction:Direction) {
                 self.name = name
                 self.location = location
                 self.direction = direction
             }
         }
         
-        public func addPin(name:String, location:Point, direction:PinDirection) {
+        public func addPin(name:String, location:Point, direction:Direction) {
             // Disallow duplicate pin names, though some devices have muliple GND pins. We'll require our definition to be unique so we know where on the element you are talking about.
             assert(pins.indexOf({ $0.name == name}) == nil)
             
@@ -87,17 +79,7 @@ public class Library {
         // A little Logo-turtle type thing. The starting point is at the tip of a pin, pointing in the direction of the pin.
         public func turtle(pinName:String) -> Turtle {
             let pin = self[pinName]
-            let degrees:Double
-            switch(pin.direction) {
-            case .Right:
-                degrees = 0
-            case .Up:
-                degrees = 90
-            case .Left:
-                degrees = 180
-            case .Down:
-                degrees = 270
-            }
+            let degrees = pin.direction.degrees
             return Turtle(location:pin.location, degrees:degrees)
         }
     }

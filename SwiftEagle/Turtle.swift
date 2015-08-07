@@ -27,4 +27,12 @@ public struct Turtle {
         let end = location + Point(m*rx, m*ry)
         return Turtle(location: end, degrees: degrees)
     }
+    
+    // Sets an absolute direction
+    public func point(degrees:Double) -> Turtle {
+        return Turtle(location: location, degrees: degrees)
+    }
+    public func point(direction:Direction) -> Turtle {
+        return Turtle(location: location, degrees: direction.degrees)
+    }
 }

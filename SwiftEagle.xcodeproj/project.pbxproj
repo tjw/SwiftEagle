@@ -19,6 +19,7 @@
 		34DBDA571B7405D800FEF48F /* Double-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DBDA561B7405D800FEF48F /* Double-Extensions.swift */; };
 		34DBDA591B74104300FEF48F /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DBDA581B74104300FEF48F /* Transform.swift */; };
 		34DBDA5B1B7439E800FEF48F /* Turtle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DBDA5A1B7439E800FEF48F /* Turtle.swift */; };
+		34DBDA5D1B7454AF00FEF48F /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DBDA5C1B7454AF00FEF48F /* Direction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		34DBDA561B7405D800FEF48F /* Double-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double-Extensions.swift"; sourceTree = "<group>"; };
 		34DBDA581B74104300FEF48F /* Transform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 		34DBDA5A1B7439E800FEF48F /* Turtle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Turtle.swift; sourceTree = "<group>"; };
+		34DBDA5C1B7454AF00FEF48F /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				34D0094D1B6FE1B700FE9F5E /* Eagle.swift */,
 				34D0094F1B6FE24800FE9F5E /* Layer.swift */,
 				34DBDA4D1B6FF66300FEF48F /* Library.swift */,
+				34DBDA5C1B7454AF00FEF48F /* Direction.swift */,
 				34DBDA5A1B7439E800FEF48F /* Turtle.swift */,
 				34DBDA4F1B6FF76000FEF48F /* Component.swift */,
 				34DBDA531B74012400FEF48F /* Geometry */,
@@ -183,6 +186,7 @@
 				34D009501B6FE24800FE9F5E /* Layer.swift in Sources */,
 				34D009531B6FE59E00FE9F5E /* Measurement.swift in Sources */,
 				34DBDA4E1B6FF66300FEF48F /* Library.swift in Sources */,
+				34DBDA5D1B7454AF00FEF48F /* Direction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
