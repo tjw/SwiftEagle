@@ -23,4 +23,9 @@ public struct Component {
     public var origin:Point {
         return transform.translate
     }
+    
+    public func pinLocation(name:String) -> Point {
+        let pin = element[name]
+        return transform.apply(pin.location)
+    }
 }

@@ -78,6 +78,11 @@ public class Library {
             
             pins.append(Pin(name:name, location:location, direction:direction))
         }
+        
+        subscript(pin:String) -> Pin {
+            let pinIndex = pins.indexOf({ $0.name == pin })
+            return pins[pinIndex!] // not bothering with error handling; die if you give a bad argument
+        }
     }
 
 }

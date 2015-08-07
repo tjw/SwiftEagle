@@ -19,4 +19,19 @@ public struct Transform {
         self.mirror = mirror
         self.translate = translate
     }
+    
+    public func apply(pt:Point) -> Point {
+        let radians = degrees * 2*M_PI / 360.0
+        
+        let c = cos(radians)
+        let s = sin(radians)
+        
+        var r = Point(pt.x * c - pt.y * s, pt.x * s + pt.y * c)
+        
+        if mirror {
+            r = Point(-r.x, r.y)
+        }
+        
+        return r + translate
+    }
 }
