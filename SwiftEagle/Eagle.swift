@@ -194,7 +194,7 @@ public class Eagle {
     }
     
     public func polygon(name:String, points:[Point]) {
-        var cmd = "polygon \(name)"
+        var cmd = "polygon '\(name)'"
         
         for p in points {
             cmd += " \(p.formatted)"
