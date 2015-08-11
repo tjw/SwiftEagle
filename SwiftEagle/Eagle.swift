@@ -209,6 +209,10 @@ public class Eagle {
         return Component(component.name, element:component.element, transform:transform)
     }
     
+    public func ratsnest() {
+        command("ratsnest")
+    }
+    
     // MARK:- Private
 
     var buffer = ""
