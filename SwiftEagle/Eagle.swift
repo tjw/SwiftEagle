@@ -207,11 +207,6 @@ public class Eagle {
         command("edit \(name)")
     }
 
-    public func confirmDialogsAutomatically(confirm:Bool) {
-        let name = confirm ? "YES" : "NO"
-        command("set confirm \(name)")
-    }
-
     public func layer(layer:Layer) {
         command("layer \(layer.rawValue)")
     }
@@ -267,9 +262,29 @@ public class Eagle {
         case FollowMeRouterBetweenPads = 9
     }
     
+    public var confirmDialogsAutomatically:Bool = false {
+        didSet {
+            let name = confirmDialogsAutomatically ? "YES" : "NO"
+            command("set confirm \(name)")
+        }
+    }
+    
     public var wireBend:WireBend = .StraightThenBend90 {
         didSet {
             command("set wire_bend \(wireBend.rawValue)")
+        }
+    }
+    
+    public var snapLength:Measurement = Inch(20/1000.0) {
+        didSet {
+            command("set snap_length \(snapLength.value)\(snapLength.unit.abbreviation)")
+        }
+    }
+    
+    public var confirmationBeep:Bool = true {
+        didSet {
+            let name = confirmationBeep ? "on" : "off"
+            command("set beep \(name)")
         }
     }
     
