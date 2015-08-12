@@ -78,7 +78,7 @@ public class Library {
         }
 
         // A little Logo-turtle type thing. The starting point is at the tip of a pin, pointing in the direction of the pin.
-        public func turtle(pinName:String) -> Turtle {
+        public func turtle(pinName pinName:String) -> Turtle {
             let pin = self[pin:pinName]
             let degrees = pin.direction.degrees
             return Turtle(location:pin.location, degrees:degrees)
@@ -106,6 +106,12 @@ public class Library {
             return pads[padIndex!] // not bothering with error handling; die if you give a bad argument
         }
 
+        // Pads don't have a direction, so we need to specify it.
+        public func turtle(padName padName:String, direction:Direction) -> Turtle {
+            let pad = self[pad:padName]
+            let degrees = direction.degrees
+            return Turtle(location:pad.location, degrees:degrees)
+        }
     }
 
 }

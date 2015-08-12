@@ -29,15 +29,28 @@ public struct Component {
         return transform.apply(pin.location)
     }
     
-    public func turtle(pinName:String) -> Turtle {
-        // Element-space turtle
-        let pinTurtle = element.turtle(pinName)
-        
+    public func turtle(pinName pinName:String) -> Turtle {
+        return transformedTurtle(element.turtle(pinName:pinName))
+    }
+    
+    public func padLocation(name:String) -> Point {
+        let pad = element[pad:name]
+        return transform.apply(pad.location)
+    }
+
+    // Pads don't have a direction, so we need to specify it. The direction is in pre-transformed coordinates.
+    public func turtle(padName padName:String, direction:Direction) -> Turtle {
+        return transformedTurtle(element.turtle(padName:padName, direction:direction))
+    }
+    
+    // MARK:- Private
+    
+    func transformedTurtle(turtle:Turtle) -> Turtle {
         // Step it forward 1mm
-        let forward = pinTurtle.move(Millimeter(1))
+        let forward = turtle.move(Millimeter(1))
         
         // Transform both points (which might to a mirror, rotate, etc).
-        let head = transform.apply(pinTurtle.location)
+        let head = transform.apply(turtle.location)
         let tail = transform.apply(forward.location)
         
         let d = tail - head
@@ -45,10 +58,5 @@ public struct Component {
         let radians = atan2(d.y.value, d.x.value)
         
         return Turtle(location: head, degrees: radians * 360 / (2.0 * M_PI))
-    }
-    
-    public func padLocation(name:String) -> Point {
-        let pad = element[pad:name]
-        return transform.apply(pad.location)
     }
 }
