@@ -63,6 +63,13 @@ public class Eagle {
         command(cmd)
     }
     
+    public var gridVisible:Bool = true {
+        didSet {
+            let name = gridVisible ? "on" : "off"
+            command("grid \(name)")
+        }
+    }
+    
     public func addLibrary(path path:String) -> Library {
         command("use \(path)")
         return Library(path: path)
