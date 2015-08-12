@@ -25,7 +25,7 @@ public struct Component {
     }
     
     public func pinLocation(name:String) -> Point {
-        let pin = element[name]
+        let pin = element[pin:name]
         return transform.apply(pin.location)
     }
     
@@ -45,5 +45,10 @@ public struct Component {
         let radians = atan2(d.y.value, d.x.value)
         
         return Turtle(location: head, degrees: radians * 360 / (2.0 * M_PI))
+    }
+    
+    public func padLocation(name:String) -> Point {
+        let pad = element[pad:name]
+        return transform.apply(pad.location)
     }
 }

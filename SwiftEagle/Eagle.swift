@@ -162,6 +162,47 @@ public class Eagle {
         net(turtles.map { $0.location }, name:name, auto_end:auto_end)
     }
     
+    public func route(points:[Point], width:Double? = nil) {
+        var cmd = "route "
+        
+        for p in points {
+            cmd += " \(p.formatted)"
+        }
+
+        if let width = width {
+            cmd += " \(width)"
+        }
+        
+        command(cmd)
+    }
+    
+    public enum Shape:String {
+        case Square = "square"
+        case Round = "round"
+        case Octagonal = "octagonal"
+    }
+    
+    public func via(point:Point, signal:String? = nil, diameter:Measurement? = nil, shape:Shape? = nil, layer1:Layer, layer2:Layer) {
+        var cmd = "via"
+        
+        if let signal = signal {
+            cmd += " '\(signal)'"
+        }
+        
+        if let diameter = diameter {
+            cmd += " \(diameter.value)\(diameter.unit.abbreviation)"
+        }
+        
+        if let shape = shape {
+            cmd += " \(shape.rawValue)"
+        }
+        
+        cmd += " \(layer1.rawValue)-\(layer2.rawValue)"
+        cmd += " \(point.formatted)"
+        
+        command(cmd)
+    }
+    
     public func edit(name:String) {
         command("edit \(name)")
     }
@@ -211,6 +252,25 @@ public class Eagle {
     
     public func ratsnest() {
         command("ratsnest")
+    }
+    
+    public enum WireBend:Int {
+        case StraightThenBend90 = 0
+        case StraightThenBend45 = 1
+        case StraightNoBend = 2
+        case Bend45ThenStraight = 3
+        case Bend90ThenStraight = 4
+        case ArcThenStraight = 5
+        case StraightThenArc = 6
+        case ArcThenStraightThenArc = 7
+        case FollowMeRouterFromInitialPad = 8
+        case FollowMeRouterBetweenPads = 9
+    }
+    
+    public var wireBend:WireBend = .StraightThenBend90 {
+        didSet {
+            command("set wire_bend \(wireBend.rawValue)")
+        }
     }
     
     // MARK:- Private

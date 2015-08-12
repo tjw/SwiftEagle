@@ -40,6 +40,7 @@ public class Library {
         public let frame:Rect // The rectangle enclosing the element when it is at the origin
 
         var pins:[Pin] = []
+        var pads:[Pad] = []
         
         init(_ name:String, library:Library, prefix:String, suffix:String?, frame:Rect) {
             assert(frame.size.w.positive)
@@ -71,17 +72,40 @@ public class Library {
             pins.append(Pin(name:name, location:location, direction:direction))
         }
         
-        subscript(pinName:String) -> Pin {
+        subscript(pin pinName:String) -> Pin {
             let pinIndex = pins.indexOf({ $0.name == pinName })
             return pins[pinIndex!] // not bothering with error handling; die if you give a bad argument
         }
 
         // A little Logo-turtle type thing. The starting point is at the tip of a pin, pointing in the direction of the pin.
         public func turtle(pinName:String) -> Turtle {
-            let pin = self[pinName]
+            let pin = self[pin:pinName]
             let degrees = pin.direction.degrees
             return Turtle(location:pin.location, degrees:degrees)
         }
+        
+        struct Pad {
+            let name:String
+            let location:Point // center of the pad -- we don't care about its dimension or whether it is PTH/SMT
+
+            init(name:String, location:Point) {
+                self.name = name
+                self.location = location
+            }
+        }
+        
+        public func addPad(name:String, location:Point) {
+            // Disallow duplicate pad names, though some devices have muliple GND connections. We'll require our definition to be unique so we know where on the element you are talking about.
+            assert(pads.indexOf({ $0.name == name}) == nil)
+            
+            pads.append(Pad(name:name, location:location))
+        }
+        
+        subscript(pad padName:String) -> Pad {
+            let padIndex = pads.indexOf({ $0.name == padName })
+            return pads[padIndex!] // not bothering with error handling; die if you give a bad argument
+        }
+
     }
 
 }
