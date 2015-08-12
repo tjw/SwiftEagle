@@ -181,11 +181,29 @@ public class Eagle {
     
     public enum Shape:String {
         case Square = "square"
-        case Round = "round"
-        case Octagonal = "octagonal"
+        case Circle = "round"
+        case Octagon = "octagonal"
     }
     
-    public func via(point:Point, signal:String? = nil, diameter:Measurement? = nil, shape:Shape? = nil, layer1:Layer, layer2:Layer) {
+    public struct Via {
+        public let location:Point
+        public let signal:String?
+        public let diameter:Measurement?
+        public let shape:Shape?
+        public let layer1:Layer
+        public let layer2:Layer
+        
+        public init(location:Point, signal:String? = nil, diameter:Measurement? = nil, shape:Shape? = nil, layer1:Layer, layer2:Layer) {
+            self.location = location
+            self.signal = signal
+            self.diameter = diameter
+            self.shape = shape
+            self.layer1 = layer1
+            self.layer2 = layer2
+        }
+    }
+    
+    public func via(location:Point, signal:String? = nil, diameter:Measurement? = nil, shape:Shape? = nil, layer1:Layer, layer2:Layer) -> Via {
         var cmd = "via"
         
         if let signal = signal {
@@ -201,9 +219,11 @@ public class Eagle {
         }
         
         cmd += " \(layer1.rawValue)-\(layer2.rawValue)"
-        cmd += " \(point.formatted)"
+        cmd += " \(location.formatted)"
         
         command(cmd)
+        
+        return Via(location:location, signal:signal, diameter:diameter, shape:shape, layer1:layer1, layer2:layer2)
     }
     
     public func edit(name:String) {
