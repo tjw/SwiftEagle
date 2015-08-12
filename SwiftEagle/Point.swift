@@ -43,6 +43,12 @@ public struct Point {
     }
 }
 
+extension Point: MeasurementConvertible {
+    public func to(toUnit: MeasurementUnit) -> Point {
+        return Point(x.to(toUnit), y.to(toUnit))
+    }
+}
+
 public func +(a:Point, b:Point) -> Point {
     return Point(a.x + b.x, a.y + b.y)
 }

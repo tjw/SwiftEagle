@@ -189,9 +189,9 @@ public func *(scale:Double, m:Measurement) -> Measurement {
 //
 // MARK:- Measurement units
 //
-class StaticMeasurementUnit: MeasurementUnit {
-    let abbreviation: String
-    let oneUnitInMillimeters: Double
+public class StaticMeasurementUnit: MeasurementUnit {
+    public let abbreviation: String
+    public let oneUnitInMillimeters: Double
     
     init(abbreviation:String, oneUnitInMillimeters:Double) {
         self.abbreviation = abbreviation
@@ -203,8 +203,8 @@ class StaticMeasurementUnit: MeasurementUnit {
     }
 }
 
-let MillimeterUnit = StaticMeasurementUnit(abbreviation: "mm", oneUnitInMillimeters: 1.0)
-let InchUnit = StaticMeasurementUnit(abbreviation: "in", oneUnitInMillimeters: 25.4)
+public let MillimeterUnit = StaticMeasurementUnit(abbreviation: "mm", oneUnitInMillimeters: 1.0)
+public let InchUnit = StaticMeasurementUnit(abbreviation: "in", oneUnitInMillimeters: 25.4)
 
 public func Millimeter(v:Double) -> Measurement {
     return Measurement(v, MillimeterUnit)
