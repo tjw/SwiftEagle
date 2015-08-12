@@ -43,15 +43,11 @@ public class Eagle {
         case Lines = "lines"
     }
     
-    public func grid(measurement:Measurement, alternate:Bool = false, visible:Bool = true, type:GridType = .Dots, factor:UInt? = nil) {
+    public func grid(measurement:Measurement, alternate:Bool = false, type:GridType = .Dots, factor:UInt? = nil) {
         var cmd = "grid"
         
-        // EAGLE doesn't allow separate visibility/type for the main and alternate grid, so 'grid alt off' is not valid. We'll just ignore the visible option in this case...
         if alternate {
             cmd += " alt"
-        } else {
-            let visibility = visible ? "on" : "off"
-            cmd += " \(visibility) \(type.rawValue)"
         }
         
         cmd += " \(measurement.unit.abbreviation) \(measurement.value)"
