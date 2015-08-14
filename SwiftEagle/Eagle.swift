@@ -29,7 +29,6 @@ public class Eagle {
     public static let pathExtension:String = "scr"
     
     public init() {
-        
     }
     
     public func string() -> String {
@@ -178,7 +177,10 @@ public class Eagle {
         
         command(cmd)
     }
-    
+    public func route(turtles:[Turtle]) {
+        route(turtles.map { $0.location })
+    }
+
     public enum Shape:String {
         case Square = "square"
         case Circle = "round"
@@ -203,20 +205,18 @@ public class Eagle {
         }
     }
     
-    public func via(location:Point, signal:String? = nil, diameter:Measurement? = nil, shape:Shape? = nil, layer1:Layer, layer2:Layer) -> Via {
+    public func via(location:Point, signal:String? = nil, diameter:Measurement? = nil, shape:Shape = .Circle, layer1:Layer = .Top, layer2:Layer = .Bottom) -> Via {
         var cmd = "via"
         
         if let signal = signal {
             cmd += " '\(signal)'"
         }
         
-        if let diameter = diameter {
-            cmd += " \(diameter.value)\(diameter.unit.abbreviation)"
+        if let d = diameter {
+            cmd += " \(d.value)\(d.unit.abbreviation)"
         }
         
-        if let shape = shape {
-            cmd += " \(shape.rawValue)"
-        }
+        cmd += " \(shape.rawValue)"
         
         cmd += " \(layer1.rawValue)-\(layer2.rawValue)"
         cmd += " \(location.formatted)"
@@ -308,6 +308,12 @@ public class Eagle {
         didSet {
             let name = confirmationBeep ? "on" : "off"
             command("set beep \(name)")
+        }
+    }
+    
+    public var drillSize:Measurement = Millimeter(0.0) {
+        didSet {
+            command("change drill \(drillSize.value)\(drillSize.unit.abbreviation)")
         }
     }
     
