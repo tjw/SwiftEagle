@@ -164,6 +164,7 @@ public class Eagle {
         net(turtles.map { $0.location }, name:name, auto_end:auto_end)
     }
     
+    // Without an explicit width, the last explicit width will be used (including for things like the wire and circle commands, it seems).
     public func route(points:[Point], width:Double? = nil) {
         var cmd = "route "
         
@@ -252,6 +253,19 @@ public class Eagle {
         command(cmd)
     }
     
+    public func circle(center:Point, radius:Measurement, lineWidth:Measurement? = nil) {
+        var cmd = "circle"
+        
+        if let w = lineWidth {
+            cmd += " \(w.value)\(w.unit.abbreviation)"
+        }
+        
+        let edgePoint = Point(center.x + radius, center.y)
+        cmd += " \(center.formatted) \(edgePoint.formatted)"
+        
+        command(cmd)
+    }
+    
     public func polygon(name:String, points:[Point]) {
         var cmd = "polygon '\(name)'"
         
@@ -289,6 +303,12 @@ public class Eagle {
         didSet {
             let name = confirmDialogsAutomatically ? "YES" : "NO"
             command("set confirm \(name)")
+        }
+    }
+    
+    public var width:Measurement = Millimeter(0) {
+        didSet {
+            command("set width \(width.value)\(width.unit.abbreviation)")
         }
     }
     
