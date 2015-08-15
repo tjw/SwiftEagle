@@ -24,5 +24,8 @@ public struct Rect {
         self.origin = lowerLeft
         self.size = Size(upperRight.x - lowerLeft.x, upperRight.y - lowerLeft.y)
     }
-    
+    public init(center:Point, size:Size) {
+        self.init(origin:center - 0.5*size, size:size)
+    }
+
 }
