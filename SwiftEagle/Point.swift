@@ -55,3 +55,10 @@ public func +(a:Point, b:Point) -> Point {
 public func -(a:Point, b:Point) -> Point {
     return Point(a.x - b.x, a.y - b.y)
 }
+
+public func +(a:Point, b:Size) -> Point {
+    return Point(a.x + b.w, a.y + b.h)
+}
+public func -(a:Point, b:Size) -> Point {
+    return Point(a.x - b.w, a.y - b.h)
+}
