@@ -238,6 +238,9 @@ public class Eagle {
     public func delete(point:Point) {
         command("delete \(point.formatted)")
     }
+    public func delete(component:Component, label:String) {
+        command("delete '\(component.name)>\(label)'")
+    }
     
     public func wire(from from:Point, to:Point) {
         command("wire \(from.formatted) \(to.formatted)")
@@ -266,12 +269,28 @@ public class Eagle {
         command(cmd)
     }
     
+    public func rect(r:Rect) {
+        command("rect \(r.origin.formatted) \((r.origin + r.size).formatted)")
+    }
+    
     public func polygon(name:String, points:[Point]) {
         var cmd = "polygon '\(name)'"
         
         for p in points {
             cmd += " \(p.formatted)"
         }
+        command(cmd)
+    }
+    
+    public func text(string:String, at:Point, degrees:Double = 0, mirror:Bool = false) {
+        var cmd = "text '\(string)' "
+        
+        if mirror {
+            cmd += "M"
+        }
+        cmd += "R\(degrees)"
+        cmd += " \(at.formatted)"
+        
         command(cmd)
     }
     
@@ -284,6 +303,10 @@ public class Eagle {
     
     public func ratsnest() {
         command("ratsnest")
+    }
+    
+    public func smash(component:Component) {
+        command("smash '\(component.name)'")
     }
     
     public enum WireBend:Int {
@@ -337,6 +360,26 @@ public class Eagle {
         }
     }
     
+    public var textHeight:Measurement = Millimeter(0.0) {
+        didSet {
+            command("change size \(textHeight.value)\(textHeight.unit.abbreviation)")
+        }
+    }
+    
+    public enum HorizontalTextAlignment:String {
+        case Left
+        case Center
+        case Right
+    }
+    public enum VerticalTextAlignment:String {
+        case Top
+        case Center
+        case Bottom
+    }
+    public func setTextAlignment(horizontal:HorizontalTextAlignment, vertical:VerticalTextAlignment) {
+        command("change align \(horizontal.rawValue) \(vertical.rawValue)")
+    }
+
     // MARK:- Private
 
     var buffer = ""
