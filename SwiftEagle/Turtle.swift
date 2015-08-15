@@ -35,4 +35,9 @@ public struct Turtle {
     public func point(direction:Direction) -> Turtle {
         return Turtle(location: location, degrees: direction.degrees)
     }
+    
+    // Relative direction adjustment
+    public func turn(degrees:Double) -> Turtle {
+        return Turtle(location:self.location, degrees:self.degrees + degrees)
+    }
 }
