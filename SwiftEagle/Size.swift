@@ -16,3 +16,10 @@ public struct Size {
         self.h = h
     }
 }
+
+public func *(size:Size, scale:Double) -> Size {
+    return Size(size.w * scale, size.h * scale)
+}
+public func *(scale:Double, size:Size) -> Size {
+    return Size(size.w * scale, size.h * scale)
+}
